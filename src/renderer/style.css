@@ -1,0 +1,37 @@
+.container-fluid {
+  padding: 4px !important;
+}
+ul {
+  margin-top : 1px;
+  -webkit-app-region: drag;
+}
+li {
+  -webkit-app-region: no-drag;
+}
+#my-textarea {
+  -webkit-appearance: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border : none !important;
+  padding: 0px !important;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  background-color: white;
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+html, body {
+   height: 100%;
+}
+body {
+  overflow-y:hidden;
+  border: 2px solid !important;
+} 
+a {
+  color : black !important;
+}
