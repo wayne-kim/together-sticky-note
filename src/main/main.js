@@ -17,7 +17,7 @@ function createWindow(option) {
     height: option ? option.height : 200,
     x : option ? option.x + 50 : null,
     y : option ? option.y + 50 : null,
-    frame: true
+    frame: false
   }) 
   if (useDevTools) win.webContents.openDevTools();
 
@@ -124,4 +124,8 @@ ipcMain.on("update2", (event, html, fileName, option) => {
   FM.updateFile(fileName, html);
   FM.writeOption(fileName, option);
   console.log("real2");
+})
+
+ipcMain.on("openDevTools", (event) => {
+  event.sender.openDevTools();
 })

@@ -57,9 +57,14 @@ ipcRenderer.on("load", (event, html) => {
 $("body").on("click", ".glyphicon-trash", function(){
   let currentWindow = remote.getCurrentWindow();
   let title = currentWindow.getTitle();
-  title == "sticky-notes" ?
-    window.close() :
-    ipcRenderer.send("delete", title);
+  
+  if(title == "sticky-notes"){
+    window.close()
+  }else {
+    let result = confirm("삭제하시겠습니까?");
+    if(result)    
+      ipcRenderer.send("delete", title);
+  }
 })
 
 //새 메모장 생성하기
@@ -103,6 +108,10 @@ ipcRenderer.on("setTitle",(event, arg) => {
   let currentWindow = remote.getCurrentWindow();
   currentWindow.setTitle(arg);
 });
+
+$("body").on("click", ".glyphicon-cog", function(arg){
+  ipcRenderer.send("openDevTools");
+})
 
 setInterval(function(){
   let html = $("#my-textarea").html();
