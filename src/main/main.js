@@ -17,7 +17,9 @@ function createWindow(option) {
     height: option ? option.height : 200,
     x : option ? option.x + 50 : null,
     y : option ? option.y + 50 : null,
-    frame: false
+    frame: false,
+    icon:'./icon.png',
+    // skipTaskbar : true
   }) 
   if (useDevTools) win.webContents.openDevTools();
 
@@ -45,7 +47,9 @@ function loadWindows(fileList) {
       x: optionObject.x,
       y: optionObject.y,
       frame: false,
-      title: fileName
+      title: fileName,
+      icon:'./icon.png',
+      // skipTaskbar : true
     })
 
     //win.setTitle(fileName);
@@ -60,6 +64,11 @@ function loadWindows(fileList) {
     win.on('closed', () => {
       win = null
     })
+
+    win.on('move', (event) => {
+       FM.writeOption(event.sender.getTitle(), event.sender.getBounds());
+       console.log("move save");
+    });
 
     wins.push(win);
   }
