@@ -136,3 +136,9 @@ function regularSave() {
   }
 }
 setInterval(regularSave, 60000);
+
+// $("body").on("click", ".glyphicon-lock", function () {
+//   $("#my-textarea").attr('readonly') == "readonly" ?
+//     $("#my-textarea").attr("readonly", false) :
+//     $("#my-textarea").attr("readonly", true)
+// });
